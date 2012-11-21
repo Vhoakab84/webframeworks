@@ -1,4 +1,3 @@
-\documentclass[12pt]{article}
 %
 % Copyleft Notice
 %
@@ -9,67 +8,44 @@
 % Creative Commons, 444 Castro Street, Suite 900, Mountain View,
 % California, 94041, USA.
 %
+\documentclass[12pt]{book}
+
+% Limit includes, compiles faster
+\includeonly{preface,chapters/introduction}
 
 % Package Imports
 \usepackage{alltt}
-
-%
-% Commands
-%
-\newcommand{\blankpage}{
-    \newpage
-    \thispagestyle{empty}
-    \mbox{}
-    \newpage
-}
 
 \parindent = 0.0 in
 
 \title{[Working Title] In the beginning was MVC: An overview of web
 frameworks}
 \author{Trevor Bramwell}
-% No date
 \date{}
 
 
 \begin{document}
 
 % Title Page
+\frontmatter
 \maketitle
-
-% Copyleft Notice
-\newpage
-
-This work is licensed under the Creative Commons 
-Attribution-NonCommercial-ShareAlike 3.0 Unported License.
-To view a copy of this license, visit \\
-http://creativecommons.org/licenses/by-nc-sa/3.0/
-or send a letter to
-
-\begin{alltt}
-Creative Commons
-444 Castro Street, Suite 900
-Mountain View, California, 94041, USA.
-\end{alltt}
-
-% Dedication
-
-% Intentional Blank
-\blankpage
-
-% Table of Contents
+\input{preface}
 \tableofcontents
 
-\section{Introduction}
-\section{Requests}
-\section{Views}
-\section{ORM/Models}
-\section{Templates}
-\section{Forms}
-\section{Middleware}
+\mainmatter
+\include{chapters/introduction}
+\include{chapters/requests}
+\include{chapters/views}
+\include{chapters/orm-models}
+\include{chapters/templates}
+\include{chapters/forms}
+\include{chapters/middleware}
 
-\section{Case Study: Django}
-\section{Case Study: Ruby on Rails}
-\section{Case Study: CakePHP}
+% Add a seperator, perhaps?
+\include{chapters/case/django}
+\include{chapters/case/rails}
+\include{chapters/case/cakephp}
+
+\backmatter
 
 \end{document}
