@@ -1,0 +1,9 @@
+\section{Templates}
+
+Originally seen as views, template have grown to blur the lines between
+controllers and views. In modern webframeworks, templates are used to
+render a markup language by passing in variables to the templating
+engine.
+
+Jinja2 (Python) is a well-known templating language, along with ERB (Rub), and
+Handlebars (JavaScript). 
