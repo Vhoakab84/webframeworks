@@ -8,3 +8,54 @@ knows what to do when someone asks for \emph{/home.html}
 These requests don't fit well at all into the MVC framework. They could
 be thought of as controllers, but since they pass a user onto a
 controller that won't work.
+
+\section{Types}
+
+There are three ways of setting up request dispatching:
+
+\begin{itemize}
+    \item Single Route Map
+    \item Attached Routes
+    \item Class based Routes
+\end{itemize}
+
+\subsection{Single Route Map}
+
+Projects that use a single route map, most notably Django, take the
+easiest approach to routing. All the routes for the web application live
+in a single file, and each is associated with a view. The view code is
+not imported into the file, as this might create circular dependencies
+if some view implemented a dynamic lookup. Instead the associated view
+to a route is listed as a module string, like 'webapp.blog.add_post'.
+The association is then handled by a seperate piece of the framework
+that uses the string to import the modules during the process of
+initialization. In Django, this would be the WSGI handler.
+
+\subsection{Attached Routes}
+
+Frameworks like Flask, Bottle, and Klein takes a simpler approach.
+Instead of having an extra file that holds all associations of routes to
+views, views are wrapped in a route decorator.
+
+This has several benefits. The association between a specific route and
+view is immediatly obvious; there is no need to open the routes file,
+look up the route and corresponding view, then open the view file.
+Because the routes are implemented as middleware, other middleware
+decorator can easily be added and applied to views.
+
+The drawback to using decorators to associate routes is decorators
+themselves. In Python decorators are applied and parsed at import time,
+not execution. Therefore any work that might assume an object exists
+that a decorator instantiated, or any view that might change ways it is
+routed at runtime can not work.
+
+\subsection{Class based Routes}
+
+Using classes to define routes is used in frameworks such as KohanaPHP.
+Instead of listing routes in a file, or appying them to a view. A
+classed view's methods define the routes that are available. Most of
+these classed would implement a \emph{index} method, which relates to
+`/'. Other methods like \emph{blog} or \emph{build} would have
+corresponding routes already created for them at `/blog' and `/build'.
+Any arguments the methods take would become \textbf{GET} or
+\textbf{POST} parameters to the route.
