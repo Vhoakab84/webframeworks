@@ -17,3 +17,27 @@ on Rails}, \emph{Django}, and \emph{CakePHP}.
 
 \footnotetext[1]{If you'd like to learn more about the original MVC
 pattern see: http://heim.ifi.uio.no/~trygver/}
+
+\section{Types of Webframeworks}
+
+There are two major categories of webframeworks:
+
+\begin{itemize}
+    \item Request \& Response
+    \item Declarative
+\end{itemize}
+
+Request \& Response frameworks such as Django, and Flask thrive on a
+request object being passed throughout the framework. At some point a
+response object is returned back to the server and send to the connected
+client.
+
+Declarative, or 'Automagical' frameworks like Rails, and CakePHP, work
+by disguising requests and responses. All framework users have to do is
+write views that return HTML, or a template, which the framework knows
+how to convert into a response. The users generally never directly touch
+or worry about things like middleware or authorization, as the framework
+provides specific ways of interacting, or adding these things. For
+example a global 'user' object that any view can access.
+other 
+like middleware
